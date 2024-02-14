@@ -14,8 +14,8 @@ public class VkSetUp extends BaseClass {
 
     protected static VkPageObjects vkPageObjects;
     protected static VkLoginPage vkLoginPage;
-    protected static String EMAIL = "transsiontestab@gmail.com";
-    protected static String PASSWORD = "eAWy55_i1";
+    protected static String EMAIL = "tra*******b@gmail.com";
+    protected static String PASSWORD = "*********";
 
     public static void openVk()  {
         vkPageObjects = new VkPageObjects(mDevice);
