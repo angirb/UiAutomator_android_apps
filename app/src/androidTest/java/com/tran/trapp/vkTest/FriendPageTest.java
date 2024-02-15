@@ -4,6 +4,7 @@ import static com.tran.trapp.steps.FriendPageSteps.deleteComment;
 import static com.tran.trapp.steps.FriendPageSteps.writeCommentFriendPage;
 
 import androidx.test.uiautomator.UiObjectNotFoundException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +12,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import io.qameta.allure.Description;
 
 
 @RunWith(JUnit4.class)
 public class FriendPageTest extends VkSetUp {
+
+
 
     @Before
     public void beforeVk() {
@@ -23,13 +25,13 @@ public class FriendPageTest extends VkSetUp {
     }
 
     @Test
-    @Description("Go to friend page list and click like button on a first post")
+//    @Description("Go to friend page list and click like button on a first post")
     public void clickLikeBtn() throws Exception {
         clickLikeBtnSteps();
     }
 
     @Test
-    @Description("Go to friend page and write a comment under his post. Search created post")
+//    @Description("Go to friend page and write a comment under his post. Search created post")
     public void writeCommentTest() throws Exception {
         writeCommentFriendPage();
     }

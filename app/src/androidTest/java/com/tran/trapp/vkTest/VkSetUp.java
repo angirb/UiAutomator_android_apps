@@ -4,10 +4,12 @@ import androidx.test.uiautomator.UiObjectNotFoundException;
 import com.tran.trapp.BaseClass;
 import com.tran.trapp.pageObjects.VkLoginPage;
 import com.tran.trapp.pageObjects.VkPageObjects;
+import com.tran.trapp.rules.RetryTestRule;
 import com.tran.trapp.utils.Watcher;
 import com.tran.trapp.pageObjects.VkServicePage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 
 
 public class VkSetUp extends BaseClass {
@@ -26,6 +28,9 @@ public class VkSetUp extends BaseClass {
         mDevice.pressRecentApps();
         vkPageObjects.clearAll().click();
     }
+
+    @Rule
+    public RetryTestRule retryRule = new RetryTestRule(2);
 
     @BeforeClass
     public static void beforeVkClass() throws Exception {
@@ -47,7 +52,7 @@ public class VkSetUp extends BaseClass {
     }
 
 
-    public static void loginVk() throws Exception {
+    public static void loginVk() {
         try {
             vkPageObjects = new VkPageObjects(mDevice);
             vkLoginPage = new VkLoginPage(mDevice);
@@ -60,15 +65,17 @@ public class VkSetUp extends BaseClass {
                 backToHomeScreen();
             } else {
                 Thread.sleep(2000);
-//            vkLoginPage.loginInput().waitForExists(LAUNCH_TIMEOUT);
                 vkLoginPage.loginInput().setText(EMAIL);
                 Thread.sleep(1000);
                 vkLoginPage.loginButton().clickAndWaitForNewWindow();
                 Thread.sleep(1000);
-                vkLoginPage.tryAnotherWayPass().exists();
-                vkLoginPage.tryAnotherWayPass().clickAndWaitForNewWindow(2000);
-                vkLoginPage.inputPasswordBtn().click();
-                vkLoginPage.passwordInput().setText(PASSWORD);
+                if(vkLoginPage.tryAnotherWayPass().exists()) {
+                    vkLoginPage.tryAnotherWayPass().clickAndWaitForNewWindow(2000);
+                    vkLoginPage.inputPasswordBtn().click();
+                    vkLoginPage.passwordInput().setText(PASSWORD);
+                } else {
+                    vkLoginPage.passwordInput().setText(PASSWORD);
+                }
                 vkLoginPage.continueLogin().click();
                 vkPageObjects.mainPage().waitForExists(1000);
                 Thread.sleep(2000);

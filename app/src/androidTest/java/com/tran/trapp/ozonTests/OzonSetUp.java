@@ -2,13 +2,17 @@ package com.tran.trapp.ozonTests;
 import androidx.test.uiautomator.UiObjectNotFoundException;
 import com.tran.trapp.BaseClass;
 import com.tran.trapp.ozonPageObjects.OzonMainPage;
+import com.tran.trapp.rules.RetryTestRule;
 import com.tran.trapp.utils.Watcher;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 
 public class OzonSetUp extends BaseClass {
     protected static OzonMainPage ozonMainPage;
+    @Rule
+    public RetryTestRule retryRule = new RetryTestRule(2);
 
     @BeforeClass
     public static void beforeOzonClass() throws Exception {
@@ -24,7 +28,7 @@ public class OzonSetUp extends BaseClass {
         registerWatcher(Watcher.Condition.ALLOW_ALL_NOTIFICATION_OZON);
         registerWatcher(Watcher.Condition.ALLOW_OZON);
     }
-    public static void openOzon() throws UiObjectNotFoundException {
+    public static void openOzon() {
         ozonMainPage = new OzonMainPage(mDevice);
         ozonMainPage.ozonApp().click();
     }

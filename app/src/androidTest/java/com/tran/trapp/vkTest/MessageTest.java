@@ -3,7 +3,6 @@ import static com.tran.trapp.steps.MessageSteps.sendGeoInMsg;
 import static com.tran.trapp.steps.MessageSteps.sendMsg;
 import static com.tran.trapp.steps.MessageSteps.sendPhotoInMsg;
 import static com.tran.trapp.steps.MessageSteps.sendSongInMsg;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +14,7 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class MessageTest extends VkSetUp {
+
 
     @Before
     public void beforeVk() {
