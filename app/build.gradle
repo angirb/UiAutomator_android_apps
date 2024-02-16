@@ -7,8 +7,8 @@ buildscript {
 }
 
 plugins {
-    id 'com.android.application'
-    id "io.qameta.allure" version "2.11.2" // just added
+        id 'com.android.application'
+        id "io.qameta.allure" version "2.11.2" // just added
 }
 android {
     namespace 'com.tran.trapp'
@@ -23,7 +23,7 @@ android {
     defaultConfig {
         applicationId "com.tran.trapp"
         minSdk 33
-        targetSdk 33
+        targetSdkVersion defaultTargetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -50,6 +50,7 @@ configurations {
     }
 }
 
+
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
@@ -67,10 +68,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'junit:junit:4.13.2'
 }
-
-
-

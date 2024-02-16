@@ -15,7 +15,7 @@ import org.junit.runners.JUnit4;
 public class OzonLoginTest extends OzonSetUp {
 
     @Before
-    public void beforeOzon() throws UiObjectNotFoundException {
+    public void beforeOzon() {
         openOzon();
     }
 
