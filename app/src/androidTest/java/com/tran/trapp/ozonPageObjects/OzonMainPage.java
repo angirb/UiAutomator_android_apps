@@ -51,6 +51,16 @@ public class OzonMainPage {
     public void clickOzonProfile() throws UiObjectNotFoundException {
         ozonProfile().click();
     }
+    public UiObject enterOrRegister() {
+        return mDevice.findObject(new UiSelector().resourceId("ru.ozon.app.android:id/titleTv").text("Войти или зарегистрироваться"));
+    }
+    public void clickEnterOrRegister() {
+        try {
+            enterOrRegister().click();
+        } catch (UiObjectNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public UiObject ozonProfilePage() {
         return mDevice.findObject(new UiSelector().resourceId("ru.ozon.app.android:id/sellerNameTv").text("Анна Заяц"));
     }

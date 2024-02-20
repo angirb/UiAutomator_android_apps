@@ -1,15 +1,18 @@
 buildscript {
     repositories {
-//        mavenLocal()
         google()
         mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.2'
     }
 }
 
 plugins {
-        id 'com.android.application'
-        id "io.qameta.allure" version "2.11.2" // just added
+    id 'com.android.application'
+    id 'io.qameta.allure' version '2.11.2'
 }
+
 android {
     namespace 'com.tran.trapp'
     compileSdk 34
@@ -23,7 +26,7 @@ android {
     defaultConfig {
         applicationId "com.tran.trapp"
         minSdk 33
-        targetSdkVersion defaultTargetSdkVersion
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -35,13 +38,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
-
+    testOptions {
+        unitTests.all {
+            useJUnit()
+        }
+    }
 }
+def allureVersion = "2.25.0"
+def aspectJVersion = "1.9.21"
 
 configurations {
     agent {
@@ -50,26 +58,21 @@ configurations {
     }
 }
 
-
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
-    implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.9'
-    implementation 'androidx.test:monitor:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout-compose-android:1.1.0-alpha13'
-    //allure
-    implementation 'io.qameta.allure:allure-assertj:2.25.0'
-    implementation 'io.qameta.allure:allure-java-commons:2.25.0'
-    implementation 'io.qameta.allure:allure-junit-platform:2.25.0'
-    implementation 'io.qameta.allure:allure-junit4:2.25.0'
-
-
     testImplementation 'junit:junit:4.13.2'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
 
+    testImplementation 'io.qameta.allure:allure-junit4:2.25.0'
+    testImplementation(platform('io.qameta.allure:allure-bom:2.25.0'))
+    testImplementation('org.slf4j:slf4j-simple:2.0.12')
+    agent("org.aspectj:aspectjweaver:1.9.9.1")
 }
+
+
+

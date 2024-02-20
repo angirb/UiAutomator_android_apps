@@ -1,5 +1,5 @@
 package com.tran.trapp.ozonTests;
-import androidx.test.uiautomator.UiObjectNotFoundException;
+
 import com.tran.trapp.BaseClass;
 import com.tran.trapp.ozonPageObjects.OzonMainPage;
 import com.tran.trapp.rules.RetryTestRule;
