@@ -3,16 +3,12 @@ package com.tran.trapp.ozonTests;
 
 import static com.tran.trapp.ozonSteps.OzonLoginSteps.loginOzon;
 import static io.qameta.allure.SeverityLevel.CRITICAL;
-
 import androidx.test.uiautomator.UiObjectNotFoundException;
-
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
